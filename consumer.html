@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		 <meta name="viewport" content="width=device-width">
+		<title>Consumer Affairs</title>
+		<style>
+			body {
+				margin: 0;
+				font-family: "HelveticaNeue Regular", sans-serif;
+				font-size: 16px;
+				line-height: 24px;
+				letter-spacing: 0.3px;
+				background-color: #ddd;
+			}
+			.container {
+				display: grid;
+				grid-template-columns: auto;
+			}
+			h1 {
+				line-height: 30px;
+				font-size: 1.63rem;
+			}
+			.link, .link:visited {
+				color: #0077c0;
+				text-decoration: none;
+			}
+			.bottom-main .link, .bottom-main .link:visited {
+				color: #000;
+				display: block;
+				font-weight: bold;
+			}
+			.brand-title {
+				display: none;
+				color: #0077c0;
+				font-size: 1.5rem;
+				font-weight: normal;
+				margin-left: 10px;
+				position: relative;
+				top: -15px;				
+			}
+			.brand-subtitle {
+				line-height: 22px;
+				font-size: 1.4rem;
+				color: #f56400;
+				margin-bottom: 30px;
+				white-space: nowrap;
+				text-transform: uppercase;
+				margin-bottom: 20px;
+			}
+			.visit {
+				padding: 15px 30px;
+				background-color: #f56400;
+				color: #fff;
+				border-radius: 6px;
+				font-family: "HelveticaNeue Regular", sans-serif;
+				border: 0;
+				margin: 20px 0;
+				text-transform: uppercase;
+				font-weight: bold;
+				letter-spacing: 1px;
+			}
+			
+			/* header */
+			
+			.header-main {
+				background-color: #eaf6fa;
+				padding: 20px 30px;
+			}
+			.header-main__logo {
+				fill: #0077c0;
+			}
+			
+			/* top */
+			
+			.top-main {
+				background-color: #fff;
+			}
+			.top-main__content {
+				margin: 20px auto 50px;
+				max-width: 1200px;
+				padding: 0 30px;
+			}
+			
+			/* bread crumb */
+			
+			.bread-crumb {
+				font-family: "HelveticaNeue Bold", sans-serif;
+				font-size: .66rem;
+				Letter spacing: .6px
+			}
+			.bread-crumb__arrow {
+				padding: 0 6px;
+			}
+			.bread-crumb__link, .bread-crumb__link:visited {
+				text-decoration: none;
+				color: #000;
+			}
+			.bread-crumb__selected {
+				font-weight: bold;
+			}
+			
+			/* author */
+			
+			.author {
+				margin-bottom: 20px;
+				display: grid;
+				grid-template-columns: 60px auto;
+			}
+			.author__pic {
+				grid-row: 1/3;
+				width: 50px;
+				border-radius: 25px;
+			}
+			.author__name {
+				font-weight: bold;
+			}
+			
+			/* bottom */
+			
+			.bottom-main {
+				margin: 20px auto;
+				max-width: 1200px;
+				padding: 0 20px;
+				display: grid;
+				grid-template-columns: auto 1fr 1fr 1fr;
+			}
+			
+			/* compare brands */
+			
+			.compare-brands {
+				grid-row: 1/3;
+			}
+			.compare-brands__content {
+				padding: 20px;
+				background-color: #fff;
+				margin-right: 50px;
+			}
+			
+			/* list */
+			
+			.list {
+				margin: 0;
+				list-style: none;
+				padding: 0;
+			}
+			.list__item {
+				padding-bottom: 20px;
+			}
+			
+			/* stars */
+			
+			.rating {
+				unicode-bidi: bidi-override;
+				direction: rtl;
+				text-align: center;
+				color: #43aa67;
+				font-size: 2rem;
+			}
+			.rating > span {
+				display: inline-block;
+				position: relative;
+				width: 1.1em;
+			}
+			.rating > span:hover,
+			.rating > span:hover ~ span {
+				color: transparent;
+			}
+			.rating > span:hover:before,
+			.rating > span:hover ~ span:before,
+			.rating > .selected:before,
+			.rating > .selected ~ .selected:before {
+				content: "\2605";
+				position: absolute;
+				color: #43aa67;
+			}
+			
+			/* brand 1 */
+			
+			.brand-1 {
+				padding: 20px;
+				background-color: #fff;
+				border-right: 2px solid #ddd;
+				text-align: center;
+			}
+			.brand-1__header {
+				text-align: left;
+				white-space: nowrap;
+			}
+			.brand-1__rec {
+				margin-left: -80px;
+			}
+			.brand-1__shield {
+				height: 50px;
+				margin-left: 15px;
+			}
+			.brand-1__shield--mobile {
+				height: 50px;
+				display: none;
+			}
+			.brand-1__logo {
+				height: 69px;
+				margin-left: -10px;
+				position: relative;
+				top: -20px;
+			}
+			.brand-1__logo--mobile {
+				display: none;
+			}
+			
+			/* brand 2 */
+			
+			.brand-2 {
+				padding: 20px;
+				background-color: #fff;
+				border-right: 2px solid #ddd;
+				text-align: center;
+			}
+			.brand-2__shield {
+				height: 50px;
+				margin-left: -20px;
+			}
+			.brand-2__logo {
+				margin-bottom: 19px;
+			}
+			.brand-2__logo--mobile {
+				display: none;
+			}
+			
+			/* brand 3 */
+			
+			.brand-3 {
+				padding: 20px;
+				background-color: #fff;
+				text-align: center;
+			}
+			.brand-3__shield {
+				height: 50px;
+				margin-left: -20px;
+			}
+			.brand-3__logo {
+				margin-bottom: 12px;
+			}
+			.brand-3__logo--mobile {
+				display: none;
+			}
+				
+			/* total home */
+
+			.total-home {
+				margin-top: 20px;
+				padding: 20px;
+				background-color: #fff;
+				grid-column: 2/5;
+				display: grid;
+				grid-template-columns: 3fr 1fr;
+			}
+			.total-home__section--left {
+				padding-right: 20px;
+				border-right: 1px solid #ddd;
+				margin-right: 20px;
+			}
+			.total-home__section--right {
+				text-align: center;
+			}
+			.total-home .rating {
+				text-align: left;
+			}
+			.total-home__shield {
+				height: 50px;
+			}
+			.total-home .brand-title {
+				color: #4a4a4a;
+				display: inline;
+			}
+			.bottom-main .total-home .link, .bottom-main .total-home .link:visited {
+				display: inline;
+			}
+			.total-home__rating {
+				margin-bottom: 20px;
+			}
+			.total-home .rating {
+				display: inline;
+			}
+			.bottom-main .total-home .brand-subtitle {
+				display: inline;
+			}
+			.sep {
+				margin: 0 10px;
+			}
+			.total-home__logo--mobile {
+				display: none;
+			}
+			
+			/* description */
+			
+			.brand-description {
+				color: #4a4a4a;
+				text-align: left;
+			}
+			
+			/* phone */
+			
+			.phone__label {
+				font-size: 1rem;
+				font-weight: normal;
+				color: #4a4a4a;
+				text-transform: uppercase;
+				display: block;
+				margin-bottom: 3px;
+			}
+			.call-now {
+				display: none;
+			}
+			.phone__call {
+				font-weight: bold;
+				font-size: 1.4rem;
+				background-color: transparent;
+				border: 0;
+				color: #000;
+				padding: 0;
+				margin: 0;
+			}
+			.total-home__section--right .phone {
+				color: #f56400;
+			}
+			.total-home__section--right .phone__label {
+				font-size: .9rem;
+			}
+			.total-home .phone__call:before {
+				content: "\1f4de";
+				color: #f56400;
+			}
+			
+			@media only screen and (max-width: 700px) {
+				.rating {
+					position: absolute;
+					font-size: 1.2rem;
+				}
+				.brand-title {
+					display: inline;
+				}
+				.brand-subtitle {
+					white-space: unset;
+					position: absolute;
+					right: 30px;
+					margin: 3px 0 0 0;
+					font-size: 1rem;
+				}
+				.brand-description {
+					margin-top: 49px;
+					border-top: 2px solid #ddd;
+					padding-top: 20px;
+				}
+				.brand-1__logo, .brand-2__logo, .brand-3__logo, .total-home__logo {
+					display: none;
+				}
+				.brand-1__logo--mobile, .brand-2__logo--mobile, .brand-3__logo--mobile, .total-home__logo--mobile {
+					display: block;
+					margin: 0 auto 20px;
+				}
+				.bottom-main {
+					grid-template-columns: auto;
+					padding: 0 10px;
+				}
+				.visit {
+					background-color: transparent;
+					border: 2px solid #000;
+					color: #000;
+					margin-right: 6px;
+				}
+				
+				/* phone */
+				
+				.phone {
+					display: inline-block;
+				}
+				.toll-free {
+					display: none;
+				}
+				.call-now {
+					display: inline;
+					font-size: .8rem;
+					font-weight: bold;
+				}
+				.phone__call {
+					padding: 15px 30px;
+					background-color: #f56400;
+					color: #fff;
+					border-radius: 6px;
+					font-family: "HelveticaNeue Regular", sans-serif;
+					font-size: .9rem;
+					border: 0;
+					margin: 0;
+					text-transform: uppercase;
+					font-weight: bold;
+					letter-spacing: 1px;
+				}
+				.total-home .phone__call:before {
+					content: "";
+				}
+				
+				/* compare-brands */
+				
+				.compare-brands {
+					grid-row: unset;
+					display: none;
+				}
+				.compare-brands__content {
+					margin-right: 0;
+				}
+				
+				/* brand 1 */
+				
+				.brand-1 {
+					border-right: 0;
+					padding-top: 0;
+					margin-bottom: 10px;
+				}
+				.brand-1__header {
+					white-space: unset;
+					position: absolute;
+				}
+				.brand-1__shield {
+					visibility: hidden;
+				}
+				.brand-1__shield--mobile {
+					display: inline;
+					margin-top: 20px;
+				}
+				
+				.brand-2 {
+					border-right: 0;
+					margin-bottom: 10px;
+				}
+				.brand-3 {
+					margin-bottom: 10px;
+				}
+				
+				/* total home */
+				
+				.total-home {
+					grid-column: unset;
+					grid-template-columns: auto;
+					margin-top: 0;
+					text-align: center;
+				}
+				.total-home__section--left {
+					padding-right: 0;
+					border-right: 0;
+					margin-right: 0;
+				}
+				.total-home__rating {
+					text-align: left;
+				}
+				.total-home .brand-title {
+					color: #0077c0;
+				}
+				.total-home .brand-description {
+					margin-top: 29px;
+				}
+				.bottom-main .total-home .link, .bottom-main .total-home .link:visited {
+					display: block;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<section class="container">
+			<header class="header-main">
+				<svg class="header-main__logo" width="310" height="26" viewBox="0 0 310 26"><path d="M13.4 6.3c1.9 0 3.5 1.3 4.1 2.6.3.5.9.8 1.5.5l4-2c.3-.1.5-.4.6-.7.1-.3.1-.6-.1-.9C22 3.2 19 0 13.4 0 6.1 0 .7 5.2.7 12.4S6 24.8 13.4 24.8c4.4 0 7.8-2 10.1-5.9.2-.3.2-.6.1-.9-.1-.3-.3-.5-.6-.7l-4-1.9c-.5-.3-1.2 0-1.5.5-.8 1.6-2.4 2.6-4.1 2.6-3.3 0-5.7-2.5-5.7-6s2.4-6.2 5.7-6.2zM36.3 0c-7.2 0-12.5 5.2-12.5 12.4S29 24.8 36.3 24.8c7.2 0 12.5-5.2 12.5-12.4S43.6 0 36.3 0zm0 18.4c-3.3 0-5.5-2.4-5.5-6s2.2-6 5.5-6 5.5 2.4 5.5 6c.1 3.5-2.2 6-5.5 6zM70.4.6h-4.6c-.6 0-1.1.5-1.1 1.1V12L56.6 1c-.2-.3-.5-.5-.9-.5h-4.8c-.6 0-1.1.5-1.1 1.1v21.8c0 .6.5 1.1 1.1 1.1h4.6c.6 0 1.1-.5 1.1-1.1V12.8L65 24.2c.2.3.5.5.9.5h4.5c.6 0 1.1-.5 1.1-1.1V1.8c0-.7-.5-1.2-1.1-1.2zM83.4 9c-1.3-.3-3.4-.8-3.4-1.3 0-1 1.4-1.1 2-1.1 2.1 0 4.1.8 5.6 2.1.2.2.5.3.8.3.3 0 .6-.2.8-.4l2.6-3.4c.3-.5.2-1.2-.2-1.5C89.2 1.5 86.1.4 82.4.4 77 .4 73 3.7 73 8.1c0 5.7 5.3 7 8.9 7.8 1.7.4 3.7.9 3.7 1.6 0 .6-.9 1.3-2.7 1.3-3.2 0-5.2-1.6-6.1-2.6-.2-.2-.6-.4-.9-.3-.3 0-.6.2-.8.5l-2.5 3.5c-.3.4-.3 1 .1 1.4 2.4 2.5 5.9 3.8 10 3.8 7.3 0 9.8-4.2 9.8-8.1 0-5.9-5.5-7.2-9.1-8zM114.1.9h-4.7c-.6 0-1.1.5-1.1 1.1v12.9c0 1.5-.5 4-4 4-2.6 0-4-1.4-4-4V2c0-.6-.5-1.1-1.1-1.1h-4.7c-.6 0-1.1.5-1.1 1.1v13.1c0 6.4 4.1 10.2 10.9 10.2 6.9 0 10.9-3.8 10.9-10.2V2c0-.6-.5-1.1-1.1-1.1zM142 .6h-6.5c-.5 0-.9.3-1 .7l-4.3 10.6L126 1.3c-.2-.4-.6-.7-1-.7h-6.5c-.6 0-1.1.5-1.1 1.1v21.8c0 .6.5 1.1 1.1 1.1h4.6c.6 0 1.1-.5 1.1-1.1V14l4 9.9c.2.4.6.7 1 .7h2c.5 0 .9-.3 1-.7l4-9.9v9.5c0 .6.5 1.1 1.1 1.1h4.7c.6 0 1.1-.5 1.1-1.1V1.7c.1-.6-.4-1.1-1.1-1.1zM161.6.6h-15.4c-.6 0-1.1.5-1.1 1.1v21.8c0 .6.5 1.1 1.1 1.1h15.4c.6 0 1.1-.5 1.1-1.1v-4.1c0-.6-.5-1.1-1.1-1.1h-9.7v-2.7h9.4c.6 0 1.1-.5 1.1-1.1v-4.1c0-.6-.5-1.1-1.1-1.1h-9.4V6.9h9.7c.6 0 1.1-.5 1.1-1.1V1.7c0-.6-.5-1.1-1.1-1.1zM184.1 22.7l-4.1-7c2.2-1 4.2-3.3 4.2-7.1 0-4.8-3.5-8.1-8.4-8.1h-10.2c-.6 0-1.1.5-1.1 1.1v21.8c0 .6.5 1.1 1.1 1.1h4.6c.6 0 1.1-.5 1.1-1.1v-6.6h1.6l4 7.2c.2.4.6.6 1 .6h5.3c.6 0 1.1-.5 1.1-1.1.1-.3 0-.6-.2-.8zM171.4 6.9h3.8c1 0 2.1.5 2.1 1.8s-1.1 1.8-2.1 1.8h-3.8V6.9z"></path><g><path d="M198.9.7c0-.1-.1-.2-.2-.2h-3.1c-.1 0-.2.1-.2.2L186 24.2v.2c0 .1.1.1.2.1h2.4c.1 0 .2-.1.2-.2l2-5.1c0-.1.1-.2.3-.2h12.2c.1 0 .2.1.3.2l2 5.1c0 .1.1.2.2.2h2.4c.1 0 .2 0 .2-.1s.1-.2 0-.2L198.9.7zm-2 2.7c0-.1.1-.2.3-.2.1 0 .2.1.3.2l5.2 13.2v.3c-.1.1-.1.1-.2.1h-10.4c-.1 0-.2 0-.2-.1-.1-.1-.1-.2 0-.3l5-13.2zM224.5.6h-15c-.1 0-.2.1-.2.2v23.5c0 .1.1.2.2.2h2c.1 0 .2-.1.2-.2V13.7c0-.2.1-.3.3-.3h12.2c.1 0 .3-.1.3-.3v-1.7c0-.1-.1-.2-.3-.2H212c-.2 0-.3-.1-.3-.3V3c0-.2.1-.3.3-.3h12.5c.1 0 .2-.1.2-.3V.8c.1-.1 0-.2-.2-.2zM241.7 13.1v-1.7c0-.1-.1-.2-.2-.2h-12.3c-.2 0-.3-.1-.3-.3V3c0-.2.1-.3.3-.3h12.5c.1 0 .3-.1.3-.3V.8c0-.1-.1-.2-.3-.2h-15c-.1 0-.2.1-.2.2v23.5c0 .1.1.2.2.2h2c.1 0 .2-.1.2-.2V13.7c0-.2.1-.3.3-.3h12.3s.2-.1.2-.3zM251.8.7c0-.1-.1-.2-.2-.2h-3.1c-.1 0-.2.1-.2.2l-9.4 23.5v.2c0 .1.1.1.2.1h2.4c.1 0 .2-.1.2-.2l2-5.1c0-.1.1-.2.3-.2h12.2c.1 0 .2.1.3.2l2 5.1c0 .1.1.2.2.2h2.4c.1 0 .2 0 .2-.1s.1-.2 0-.2L251.8.7zm-2 2.7c0-.1.1-.2.3-.2.1 0 .2.1.3.2l5.2 13.2v.3c0 .1-.1.1-.2.1H245c-.1 0-.2 0-.2-.1s-.1-.2 0-.3l5-13.2zM265.5.6h-2c-.1 0-.3.1-.3.2v23.5c0 .1.1.2.3.2h2c.1 0 .2-.1.2-.2V.8c.1-.1-.1-.2-.2-.2zM279.8 14.6c2.8-.2 6.1-2.2 6.1-6.9 0-4.3-3-7.1-7.4-7.1h-9.3c-.1 0-.2.1-.2.2v23.5c0 .1.1.2.2.2h2c.1 0 .3-.1.3-.2v-9.2c0-.2.1-.3.3-.3h4.9c.1 0 .2 0 .2.1l6.1 9.5c0 .1.1.1.2.1h2.3c.1 0 .2-.1.2-.1v-.3l-6.1-9.2c-.1-.1-.1-.2 0-.3h.2zM271.4 3c0-.2.1-.3.3-.3h6.4c3 0 5.2 2 5.2 4.9 0 2.9-2.1 5-5.2 5h-6.4c-.2 0-.3-.1-.3-.3V3zM296.2 10.8c-3.1-.9-6.1-1.7-6.1-4.3 0-2.5 2.2-4.2 5.3-4.2 2.7 0 5.1.9 6.9 2.6 0 0 .1.1.2.1s.1 0 .2-.1l1.2-1.4c.1-.1.1-.2 0-.3-2.1-2-4.8-3-8.2-3-4.8 0-8.2 2.7-8.2 6.5 0 4.5 4 5.6 7.9 6.7 3.2.9 6.6 1.8 6.6 4.9 0 2.1-1.6 4.5-6.1 4.5-3.6 0-6.1-1.7-7.5-3.1-.1 0-.1-.1-.2-.1s-.1 0-.2.1l-1.2 1.5c-.1.1-.1.2 0 .3 1.5 1.6 4.3 3.5 8.9 3.5 8.1 0 8.8-5.3 8.8-6.9.1-5-4.2-6.1-8.3-7.3z"></path></g></svg>
+			</header>
+			<section class="top-main">
+				<section class="top-main__content">
+					<section class="bread-crumb">
+						<a href="#" class="bread-crumb__link">Home</a> <span class="bread-crumb__arrow">&gt;</span> <a href="#" class="bread-crumb__link">Home Owners</a> <span class="bread-crumb__arrow">&gt;</span> <span class="bread-crumb__selected">Home Warranties</span>
+					</section>
+					<h1>Best Home Warranty Companies</h1>
+					<section class="author">
+						<img src="https://media.consumeraffairs.com/files/cache/staff-photos/Michele_Lerner_-_Google_head_shot_small.png" class="author__pic">
+						<section class="author__name">by Michele Lerner</section>
+						<section class="author__title">Mortgage &amp; Real Estate Contributing Editor</section>
+					</section>
+					<section class="description">
+						Home warranties help cover costly, unexpected repairs on systems and appliances that break due to normal wear and tear. When finding the best home warranty, you'll need to understand <a href="#" class="link">how home warranties work</a>, determine <a href="#" class="link">how much it will cost</a> and know what to look for in a service contract to make sure you get the right <a href="#" class="link">coverage</a>.
+					</section>
+				</section>
+			</section>
+			<section class="bottom-main">
+				<section class="compare-brands">
+					<section class="compare-brands__content">
+						<h2 class="brand-subtitle">| Compare brands</h2>
+						<ul class="list">
+							<li class="list__item">Our top 3 picks for the best home warranty</li>
+							<li class="list__item">Home warranty Reviews</li>
+							<li class="list__item">Home Warranty FAQ</li>
+						</ul>
+					</section>
+				</section>
+				<section class="brand-1">
+					<header class="brand-1__header">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="-276 394.89 42 53" class="brand-1__shield"><path style="fill:#1091CC" d="M-272.09,399l-3.91-0.17v23.79c0,6.49,3.24,12.54,9.22,17.83c3.99,3.53,9.18,6.55,11.38,6.55 c2.2,0,7.38-3.03,11.38-6.57c5.98-5.29,9.22-11.32,9.22-17.77v-23.84l-3.93,0.19c-0.87,0.04-1.81,0.02-2.81-0.05 c-2.35-0.18-4.98-0.68-7.77-1.46c-1.18-0.33-2.34-0.69-3.43-1.08c-0.54-0.19-1-0.36-1.25-0.46l-1.39-0.56l-1.39,0.55 c-0.26,0.1-0.73,0.27-1.27,0.46c-1.11,0.38-2.28,0.75-3.48,1.08c-2.75,0.76-5.34,1.25-7.65,1.45 C-270.23,399.01-271.2,399.04-272.09,399z"></path><path style="fill:#006593" d="M-268.83,403.7c2.69-0.22,5.55-0.79,8.45-1.59c1.34-0.37,2.6-0.76,3.74-1.16 c0.4-0.14,0.76-0.27,1.07-0.38c0.06-0.02,0.12-0.04,0.16-0.06c0,0,0.51,0.5,0.51,1.19c0,6.06,0.07,35.58,0,40.54 c-0.01,0.46-0.5,0.85-0.5,0.85c-0.21,0-1.47-0.57-2.86-1.38c-1.87-1.09-3.84-2.49-5.64-4.08c-4.84-4.28-7.75-9.24-7.75-14.57V403.8 C-270.75,403.82-269.81,403.78-268.83,403.7z"></path><path style="fill:#006EA0" d="M-255.4,400.51c0.05,0.02,0.1,0.04,0.16,0.06c0.31,0.12,0.66,0.25,1.06,0.38 c1.13,0.4,2.38,0.79,3.71,1.16c2.95,0.82,5.87,1.39,8.6,1.61c0.95,0.07,1.86,0.1,2.73,0.08v19.29c0,5.29-2.91,10.23-7.75,14.52 c-1.8,1.59-3.77,3-5.64,4.09c-1.39,0.81-2.66,1.39-2.86,1.39L-255.4,400.51z"></path><path style="fill:#FFFFFF" d="M-255.4,424.5l-3.88,2.69c-0.41,0.28-0.97,0.18-1.25-0.23 c-0.16-0.23-0.2-0.52-0.12-0.79l1.42-4.39l-3.76-2.71c-0.4-0.29-0.49-0.85-0.2-1.26c0.17-0.23,0.44-0.37,0.72-0.37l4.71-0.04 l1.51-4.41c0.16-0.47,0.67-0.72,1.14-0.56c0.26,0.09,0.47,0.3,0.56,0.56l1.51,4.41l4.71,0.04c0.5,0,0.9,0.41,0.89,0.91 c0,0.29-0.14,0.55-0.37,0.72l-3.76,2.71l1.42,4.39c0.15,0.47-0.11,0.98-0.58,1.13c-0.27,0.09-0.56,0.04-0.79-0.12L-255.4,424.5z"></path></svg>
+						<svg class="brand-1__rec" width="90px" height="82px" viewBox="0 0 90 82" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+								<g id="group-7-copy-2">
+									<polygon id="Path" fill="#EBEBEB" style="mix-blend-mode: multiply;" points="3 68.981 61.124 3 89.479 3 3 81.566"></polygon>
+									<polygon id="Path" fill="#1091CC" points="0 42.815 49.85 0 88.26 0 0 80.5"></polygon>
+									<path d="M88.26,0 L84.977,3 L88.26,3 L88.26,0 Z M3,77.792 L0,80.5 L3,80.5 L3,77.792 Z" id="Shape" fill="#00618E" fill-rule="nonzero"></path>
+									<g id="Group" transform="translate(30.917495, 31.375613) rotate(-42.000000) translate(-30.917495, -31.375613) translate(1.417495, 22.375613)" fill="#FFFFFF" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="14" font-weight="bold">
+										<text id="Our-Pick">
+											<tspan x="0.221" y="14.144">Our Pick</tspan>
+										</text>
+									</g>
+								</g>
+							</g>
+						</svg>
+						<img src="https://media.consumeraffairs.com/files/cache/logos/american-home-shield_logo_17494_ratings_box_logo_jpeg.jpg" class="brand-1__logo">
+					</header>
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="-276 394.89 42 53" class="brand-1__shield--mobile"><path style="fill:#1091CC" d="M-272.09,399l-3.91-0.17v23.79c0,6.49,3.24,12.54,9.22,17.83c3.99,3.53,9.18,6.55,11.38,6.55 c2.2,0,7.38-3.03,11.38-6.57c5.98-5.29,9.22-11.32,9.22-17.77v-23.84l-3.93,0.19c-0.87,0.04-1.81,0.02-2.81-0.05 c-2.35-0.18-4.98-0.68-7.77-1.46c-1.18-0.33-2.34-0.69-3.43-1.08c-0.54-0.19-1-0.36-1.25-0.46l-1.39-0.56l-1.39,0.55 c-0.26,0.1-0.73,0.27-1.27,0.46c-1.11,0.38-2.28,0.75-3.48,1.08c-2.75,0.76-5.34,1.25-7.65,1.45 C-270.23,399.01-271.2,399.04-272.09,399z"></path><path style="fill:#006593" d="M-268.83,403.7c2.69-0.22,5.55-0.79,8.45-1.59c1.34-0.37,2.6-0.76,3.74-1.16 c0.4-0.14,0.76-0.27,1.07-0.38c0.06-0.02,0.12-0.04,0.16-0.06c0,0,0.51,0.5,0.51,1.19c0,6.06,0.07,35.58,0,40.54 c-0.01,0.46-0.5,0.85-0.5,0.85c-0.21,0-1.47-0.57-2.86-1.38c-1.87-1.09-3.84-2.49-5.64-4.08c-4.84-4.28-7.75-9.24-7.75-14.57V403.8 C-270.75,403.82-269.81,403.78-268.83,403.7z"></path><path style="fill:#006EA0" d="M-255.4,400.51c0.05,0.02,0.1,0.04,0.16,0.06c0.31,0.12,0.66,0.25,1.06,0.38 c1.13,0.4,2.38,0.79,3.71,1.16c2.95,0.82,5.87,1.39,8.6,1.61c0.95,0.07,1.86,0.1,2.73,0.08v19.29c0,5.29-2.91,10.23-7.75,14.52 c-1.8,1.59-3.77,3-5.64,4.09c-1.39,0.81-2.66,1.39-2.86,1.39L-255.4,400.51z"></path><path style="fill:#FFFFFF" d="M-255.4,424.5l-3.88,2.69c-0.41,0.28-0.97,0.18-1.25-0.23 c-0.16-0.23-0.2-0.52-0.12-0.79l1.42-4.39l-3.76-2.71c-0.4-0.29-0.49-0.85-0.2-1.26c0.17-0.23,0.44-0.37,0.72-0.37l4.71-0.04 l1.51-4.41c0.16-0.47,0.67-0.72,1.14-0.56c0.26,0.09,0.47,0.3,0.56,0.56l1.51,4.41l4.71,0.04c0.5,0,0.9,0.41,0.89,0.91 c0,0.29-0.14,0.55-0.37,0.72l-3.76,2.71l1.42,4.39c0.15,0.47-0.11,0.98-0.58,1.13c-0.27,0.09-0.56,0.04-0.79-0.12L-255.4,424.5z"></path></svg>
+					<h2 class="brand-title">American Home Shield</h2>
+					<section class="rating">
+						<span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+					</section>
+					<h3 class="brand-subtitle">Read 34,348 reviews</h3>
+					<section class="brand-description">
+						<img src="https://media.consumeraffairs.com/files/cache/logos/american-home-shield_logo_17494_ratings_box_logo_jpeg.jpg" class="brand-1__logo--mobile">
+						Either choose from 3 plans that cover 11 systems, 10 appliances or a combination of both or build your own plan for customized coverage. Premium costs vary by location; deductibles range from $75-$125. Payment plans available.
+						<a href="#" class="link">Find out more</a>
+					</section>
+					<section class="buttons">
+						<button class="visit">Visit Website</button>
+						<section class="phone">
+							<label class="phone__label">
+									<span class="toll-free">Toll free number</span>
+									<span class="call-now">Call now</span>
+							</label>
+							<button class="phone__call">(855) 463-2405</button>
+						</section>
+					</section>
+				</section>
+				<section class="brand-2">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="-276 394.89 42 53" class="brand-2__shield"><path style="fill:#1091CC" d="M-272.09,399l-3.91-0.17v23.79c0,6.49,3.24,12.54,9.22,17.83c3.99,3.53,9.18,6.55,11.38,6.55 c2.2,0,7.38-3.03,11.38-6.57c5.98-5.29,9.22-11.32,9.22-17.77v-23.84l-3.93,0.19c-0.87,0.04-1.81,0.02-2.81-0.05 c-2.35-0.18-4.98-0.68-7.77-1.46c-1.18-0.33-2.34-0.69-3.43-1.08c-0.54-0.19-1-0.36-1.25-0.46l-1.39-0.56l-1.39,0.55 c-0.26,0.1-0.73,0.27-1.27,0.46c-1.11,0.38-2.28,0.75-3.48,1.08c-2.75,0.76-5.34,1.25-7.65,1.45 C-270.23,399.01-271.2,399.04-272.09,399z"></path><path style="fill:#006593" d="M-268.83,403.7c2.69-0.22,5.55-0.79,8.45-1.59c1.34-0.37,2.6-0.76,3.74-1.16 c0.4-0.14,0.76-0.27,1.07-0.38c0.06-0.02,0.12-0.04,0.16-0.06c0,0,0.51,0.5,0.51,1.19c0,6.06,0.07,35.58,0,40.54 c-0.01,0.46-0.5,0.85-0.5,0.85c-0.21,0-1.47-0.57-2.86-1.38c-1.87-1.09-3.84-2.49-5.64-4.08c-4.84-4.28-7.75-9.24-7.75-14.57V403.8 C-270.75,403.82-269.81,403.78-268.83,403.7z"></path><path style="fill:#006EA0" d="M-255.4,400.51c0.05,0.02,0.1,0.04,0.16,0.06c0.31,0.12,0.66,0.25,1.06,0.38 c1.13,0.4,2.38,0.79,3.71,1.16c2.95,0.82,5.87,1.39,8.6,1.61c0.95,0.07,1.86,0.1,2.73,0.08v19.29c0,5.29-2.91,10.23-7.75,14.52 c-1.8,1.59-3.77,3-5.64,4.09c-1.39,0.81-2.66,1.39-2.86,1.39L-255.4,400.51z"></path><path style="fill:#FFFFFF" d="M-255.4,424.5l-3.88,2.69c-0.41,0.28-0.97,0.18-1.25-0.23 c-0.16-0.23-0.2-0.52-0.12-0.79l1.42-4.39l-3.76-2.71c-0.4-0.29-0.49-0.85-0.2-1.26c0.17-0.23,0.44-0.37,0.72-0.37l4.71-0.04 l1.51-4.41c0.16-0.47,0.67-0.72,1.14-0.56c0.26,0.09,0.47,0.3,0.56,0.56l1.51,4.41l4.71,0.04c0.5,0,0.9,0.41,0.89,0.91 c0,0.29-0.14,0.55-0.37,0.72l-3.76,2.71l1.42,4.39c0.15,0.47-0.11,0.98-0.58,1.13c-0.27,0.09-0.56,0.04-0.79-0.12L-255.4,424.5z"></path></svg>
+					<img src="https://media.consumeraffairs.com/files/cache/logos/choice-home-warranty_logo_1907_ratings_box_logo_jpeg.jpg" class="brand-2__logo">
+					<h2 class="brand-title">Choice Home Warranty</h2>
+					<section class="rating">
+						<span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+					</section>
+					<h3 class="brand-subtitle">Read 15,468 reviews</h3>
+					<section class="brand-description">
+						<img src="https://media.consumeraffairs.com/files/cache/logos/choice-home-warranty_logo_1907_ratings_box_logo_jpeg.jpg" class="brand-2__logo--mobile">
+						Offers 2 plans with basic or more comprehensive coverage. Deductibles for either plans are $60 per repair. You can also add optional items like pools or septic systems. Premiums vary based on location and home type and size.
+						<a href="#" class="link">Find out more</a>
+					</section>
+					<section class="buttons">
+						<button class="visit">Visit Website</button>
+						<section class="phone">
+							<label class="phone__label">
+									<span class="toll-free">Toll free number</span>
+									<span class="call-now">Call now</span>
+							</label>
+							<button class="phone__call">(855) 388-1195</button>
+						</section>
+					</section>
+				</section>
+				<section class="brand-3">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="-276 394.89 42 53" class="brand-3__shield"><path style="fill:#1091CC" d="M-272.09,399l-3.91-0.17v23.79c0,6.49,3.24,12.54,9.22,17.83c3.99,3.53,9.18,6.55,11.38,6.55 c2.2,0,7.38-3.03,11.38-6.57c5.98-5.29,9.22-11.32,9.22-17.77v-23.84l-3.93,0.19c-0.87,0.04-1.81,0.02-2.81-0.05 c-2.35-0.18-4.98-0.68-7.77-1.46c-1.18-0.33-2.34-0.69-3.43-1.08c-0.54-0.19-1-0.36-1.25-0.46l-1.39-0.56l-1.39,0.55 c-0.26,0.1-0.73,0.27-1.27,0.46c-1.11,0.38-2.28,0.75-3.48,1.08c-2.75,0.76-5.34,1.25-7.65,1.45 C-270.23,399.01-271.2,399.04-272.09,399z"></path><path style="fill:#006593" d="M-268.83,403.7c2.69-0.22,5.55-0.79,8.45-1.59c1.34-0.37,2.6-0.76,3.74-1.16 c0.4-0.14,0.76-0.27,1.07-0.38c0.06-0.02,0.12-0.04,0.16-0.06c0,0,0.51,0.5,0.51,1.19c0,6.06,0.07,35.58,0,40.54 c-0.01,0.46-0.5,0.85-0.5,0.85c-0.21,0-1.47-0.57-2.86-1.38c-1.87-1.09-3.84-2.49-5.64-4.08c-4.84-4.28-7.75-9.24-7.75-14.57V403.8 C-270.75,403.82-269.81,403.78-268.83,403.7z"></path><path style="fill:#006EA0" d="M-255.4,400.51c0.05,0.02,0.1,0.04,0.16,0.06c0.31,0.12,0.66,0.25,1.06,0.38 c1.13,0.4,2.38,0.79,3.71,1.16c2.95,0.82,5.87,1.39,8.6,1.61c0.95,0.07,1.86,0.1,2.73,0.08v19.29c0,5.29-2.91,10.23-7.75,14.52 c-1.8,1.59-3.77,3-5.64,4.09c-1.39,0.81-2.66,1.39-2.86,1.39L-255.4,400.51z"></path><path style="fill:#FFFFFF" d="M-255.4,424.5l-3.88,2.69c-0.41,0.28-0.97,0.18-1.25-0.23 c-0.16-0.23-0.2-0.52-0.12-0.79l1.42-4.39l-3.76-2.71c-0.4-0.29-0.49-0.85-0.2-1.26c0.17-0.23,0.44-0.37,0.72-0.37l4.71-0.04 l1.51-4.41c0.16-0.47,0.67-0.72,1.14-0.56c0.26,0.09,0.47,0.3,0.56,0.56l1.51,4.41l4.71,0.04c0.5,0,0.9,0.41,0.89,0.91 c0,0.29-0.14,0.55-0.37,0.72l-3.76,2.71l1.42,4.39c0.15,0.47-0.11,0.98-0.58,1.13c-0.27,0.09-0.56,0.04-0.79-0.12L-255.4,424.5z"></path></svg>
+					<img src="https://media.consumeraffairs.com/files/cache/logos/select-home-warranty_logo_1941_ratings_box_logo_jpeg.jpg" class="brand-3__logo">
+					<h2 class="brand-title">Select Home Warranty</h2>
+					<section class="rating">
+						<span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+					</section>
+					<h3 class="brand-subtitle">Read 5,896 reviews</h3>
+					<section class="brand-description">
+						<img src="https://media.consumeraffairs.com/files/cache/logos/select-home-warranty_logo_1941_ratings_box_logo_jpeg.jpg" class="brand-3__logo--mobile">
+						Select from 3 plan options that include systems, appliances or both. Premiums begin at $429 with deductibles as low as $60. Customers can also add additional optional items or systems not included in the standard policies.
+						<a href="#" class="link">Find out more</a>
+					</section>
+					<section class="buttons">
+						<button class="visit">Visit Website</button>
+						<section class="phone">
+							<label class="phone__label">
+									<span class="toll-free">Toll free number</span>
+									<span class="call-now">Call now</span>
+							</label>
+							<button class="phone__call">(855) 262-6795</button>
+						</section>
+					</section>
+				</section>
+				<section class="total-home">
+					<section class="total-home__section--left">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="-276 394.89 42 53" class="total-home__shield"><path style="fill:#1091CC" d="M-272.09,399l-3.91-0.17v23.79c0,6.49,3.24,12.54,9.22,17.83c3.99,3.53,9.18,6.55,11.38,6.55 c2.2,0,7.38-3.03,11.38-6.57c5.98-5.29,9.22-11.32,9.22-17.77v-23.84l-3.93,0.19c-0.87,0.04-1.81,0.02-2.81-0.05 c-2.35-0.18-4.98-0.68-7.77-1.46c-1.18-0.33-2.34-0.69-3.43-1.08c-0.54-0.19-1-0.36-1.25-0.46l-1.39-0.56l-1.39,0.55 c-0.26,0.1-0.73,0.27-1.27,0.46c-1.11,0.38-2.28,0.75-3.48,1.08c-2.75,0.76-5.34,1.25-7.65,1.45 C-270.23,399.01-271.2,399.04-272.09,399z"></path><path style="fill:#006593" d="M-268.83,403.7c2.69-0.22,5.55-0.79,8.45-1.59c1.34-0.37,2.6-0.76,3.74-1.16 c0.4-0.14,0.76-0.27,1.07-0.38c0.06-0.02,0.12-0.04,0.16-0.06c0,0,0.51,0.5,0.51,1.19c0,6.06,0.07,35.58,0,40.54 c-0.01,0.46-0.5,0.85-0.5,0.85c-0.21,0-1.47-0.57-2.86-1.38c-1.87-1.09-3.84-2.49-5.64-4.08c-4.84-4.28-7.75-9.24-7.75-14.57V403.8 C-270.75,403.82-269.81,403.78-268.83,403.7z"></path><path style="fill:#006EA0" d="M-255.4,400.51c0.05,0.02,0.1,0.04,0.16,0.06c0.31,0.12,0.66,0.25,1.06,0.38 c1.13,0.4,2.38,0.79,3.71,1.16c2.95,0.82,5.87,1.39,8.6,1.61c0.95,0.07,1.86,0.1,2.73,0.08v19.29c0,5.29-2.91,10.23-7.75,14.52 c-1.8,1.59-3.77,3-5.64,4.09c-1.39,0.81-2.66,1.39-2.86,1.39L-255.4,400.51z"></path><path style="fill:#FFFFFF" d="M-255.4,424.5l-3.88,2.69c-0.41,0.28-0.97,0.18-1.25-0.23 c-0.16-0.23-0.2-0.52-0.12-0.79l1.42-4.39l-3.76-2.71c-0.4-0.29-0.49-0.85-0.2-1.26c0.17-0.23,0.44-0.37,0.72-0.37l4.71-0.04 l1.51-4.41c0.16-0.47,0.67-0.72,1.14-0.56c0.26,0.09,0.47,0.3,0.56,0.56l1.51,4.41l4.71,0.04c0.5,0,0.9,0.41,0.89,0.91 c0,0.29-0.14,0.55-0.37,0.72l-3.76,2.71l1.42,4.39c0.15,0.47-0.11,0.98-0.58,1.13c-0.27,0.09-0.56,0.04-0.79-0.12L-255.4,424.5z"></path></svg>
+						<h2 class="brand-title">Total Home Protection</h2>
+						<section class="total-home__rating">
+							<section class="rating">
+								<span>☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span><span class="selected">☆</span>
+							</section>
+							<span class="sep">|</span>
+							<h3 class="brand-subtitle">Read 722 reviews</h3>
+						</section>
+						<section class="brand-description">
+							<img src="https://media.consumeraffairs.com/files/cache/logos/total-homeshield-home-protection_logo_12098_ratings_box_logo_jpeg.JPG" class="total-home__logo--mobile">
+							Offers 2 coverage plans that both cover select systems and appliances. Premium costs vary by location and home with standard deductibles of $60. Optional additional coverage is also available.
+							<a href="#" class="link">Find out more</a>
+						</section>
+					</section>
+					<section class="total-home__section--right">
+						<img src="https://media.consumeraffairs.com/files/cache/logos/total-homeshield-home-protection_logo_12098_ratings_box_logo_jpeg.JPG" class="total-home__logo">
+						<section class="buttons">
+							<button class="visit">Visit Website</button>
+							<section class="phone">
+								<label class="phone__label">
+									<span class="toll-free">Toll free number</span>
+									<span class="call-now">Call now</span>
+								</label>
+								<button class="phone__call">(855) 910-5813</button>
+							</section>
+						</section>
+					</section>
+				</section>
+			</section>
+		</section>
+	</body>
+</html>
